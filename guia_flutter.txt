@@ -1,0 +1,162 @@
+===============| Flutter |===============
+
+Framework para desenvolvimente cross-platform utilizando a linguagem Dart.
+(Android, iOS, Web, Windows, Linux e macOS)
+
+HOT RELOAD:
+	Alterações no código são refletidas rapidamente no emulador ou aparelho sem perder estado da aplicação.
+
+
+HOT RESTART: 
+	Reinicialização do aplicativo. Perde o estado atual.
+
+
+WIDGETS (Ferramentas): --------------------------------------------------------------------------------
+
+	Tudo que tem na tela do aplicativo é um widget!
+
+	Tipos: Stateless e Stateful.
+	
+	Grupos de Widget: Layout e UI.
+	(Nem todo widget se enquadra nesses grupos)
+	
+
+	MÉTODOS: --------------------------------------------------------------------------------
+		build() - constrói a representação visual de um widget.
+			- retorna uma árvore de widgets que definem como este widget deve ser exibido.
+			- é onde a gente vê todos os widgets do widget superior.
+			Todos widgets que serão construídos precisam sobreescrever o método build.
+
+	LAYOUT: --------------------------------------------------------------------------------
+	
+		Widgets que se preocupam em apenas posicionar outros widgets.
+		
+		[Column]
+
+		[Row]
+
+		[Scaffold]
+
+		[Stack]
+
+	UI: --------------------------------------------------------------------------------
+
+		Widgets que estão visíveis ao usuário.
+
+		[Text]
+
+		[RaisedButton]
+
+		[Switch]
+
+	
+	Conjuntos de Widget mais usados:
+		
+		Material Package: --------------------------------------------------------------------------------
+			
+			Segue as definições do Material Design.
+
+
+		Cupertino Package: --------------------------------------------------------------------------------
+		
+			Segue as definições de design do iOS.
+
+
+Chamando Aplicação: --------------------------------------------------------------------------------
+	
+	Método runApp executa o aplicativo.
+		
+		void main(){
+			runApp(<widget superior>);
+		}
+	
+
+
+
+===============| Dart |===============
+
+Arquivo main.dart chamando o método main().
+	void main(){
+	
+	}
+
+Tipos de Dados: --------------------------------------------------------------------------------
+	
+	<tipo> <nome> = <valor>;
+	
+	Tipagem Opcional:
+		String name = 'nome';
+		
+		//inferência (dedução)
+		var name = 'nome';
+
+
+	Ex.:
+		String name 'Voyager I';
+
+		int ano = 2004;
+
+		double preco = 4.89;	
+
+		List<String> planetas = ['Jupiter', 'Saturn', 'Urano', 'Netuno']
+
+		Map<String, String> image = {
+			'tags': 'Saturno',
+			'url': '//path/to/saturn.jpg'
+		};
+
+		boolean
+
+		rune
+	
+		symbols
+
+
+Estruturas Condicionais: --------------------------------------------------------------------------------
+	
+	if(<condição>){
+			
+	} else if(<condição>){
+
+	}
+
+		
+Estruturas de Repetição: --------------------------------------------------------------------------------
+
+	for (int I = 1; I <= 10; i++) {
+	
+	}
+
+
+
+	while (ano < 2000){
+
+	}
+	
+	
+
+	do {
+
+	} while (<condição>);
+
+
+Funções: --------------------------------------------------------------------------------
+
+	<tipo do retorno> <nome da função>(<parâmetros>){
+	
+		return <retorno>;
+	}
+
+
+Tratamento de exceções: --------------------------------------------------------------------------------
+
+	try {
+	  for (var object in flybyObjects) {
+	    var description = await File('$object.txt').readAsString();
+	    print(description);
+	  }
+	} on IOException catch (e) {
+	  print('Could not describe object: $e');
+	} finally {
+	  flybyObjects.clear();
+	}
