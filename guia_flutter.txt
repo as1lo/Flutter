@@ -72,6 +72,23 @@ Chamando Aplicação: ----------------------------------------------------------
 	
 
 
+MaterialApp: --------------------------------------------------------------------------------
+	
+	- Define aspectos básicos do aplicativo (configurações e comportamentos globais).
+		Temas, rotas de navegação, titulo, cor, fonte, texto, idioma.
+
+Scaffold: --------------------------------------------------------------------------------
+	
+	- Define as configurações de layout do aplicativo (estrutura e organização da página).
+		[AppBar] - NavBar (barra de navegação superior)
+		[Body] - Área principal da tela.
+		[FloatingActionButton] - botão flutuante; sobrepõe outros widgets;
+		[BottomNavigationBar] - barra de navegação inferior.
+		[Drawer] - menu vertical
+		
+
+
+
 
 ===============| Dart |===============
 
