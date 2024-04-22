@@ -17,6 +17,11 @@ WIDGETS (Ferramentas): ---------------------------------------------------------
 
 	Tipos: Stateless e Stateful.
 	
+	Stateless: não tem seu estado alterado (texto)
+
+	Stateful: tem seu estado alterado (Switch)
+
+	
 	Grupos de Widget: Layout e UI.
 	(Nem todo widget se enquadra nesses grupos)
 	
@@ -26,7 +31,9 @@ WIDGETS (Ferramentas): ---------------------------------------------------------
 			- retorna uma árvore de widgets que definem como este widget deve ser exibido.
 			- é onde a gente vê todos os widgets do widget superior.
 			Todos widgets que serão construídos precisam sobreescrever o método build.
-
+			
+			Parâmetro: (BuildContext context) 
+				- fornece informações sobre a posição do widget na hierarquia da árvore de widget.
 	LAYOUT: --------------------------------------------------------------------------------
 	
 		Widgets que se preocupam em apenas posicionar outros widgets.
@@ -76,17 +83,84 @@ MaterialApp: -------------------------------------------------------------------
 	
 	- Define aspectos básicos do aplicativo (configurações e comportamentos globais).
 		Temas, rotas de navegação, titulo, cor, fonte, texto, idioma.
-
+	
+		Parâmetros Nomeados:
+			[home] - definir quem vai ser a tela inicial do app
 Scaffold: --------------------------------------------------------------------------------
 	
 	- Define as configurações de layout do aplicativo (estrutura e organização da página).
-		[AppBar] - NavBar (barra de navegação superior)
-		[Body] - Área principal da tela.
-		[FloatingActionButton] - botão flutuante; sobrepõe outros widgets;
-		[BottomNavigationBar] - barra de navegação inferior.
-		[Drawer] - menu vertical
-		
+		Parâmetros nomeados:
 
+			[AppBar] - NavBar (barra de navegação superior)
+				title: Text
+
+			[Body] - Área principal da tela.
+				Center
+
+			[FloatingActionButton] - botão flutuante; sobrepõe outros widgets;
+			[BottomNavigationBar] - barra de navegação inferior.
+			[Drawer] - menu vertical
+	
+	
+Stateless (sem estado): --------------------------------------------------------------------------------
+
+	Conteúdo ou aparência do widget não mudam. Quando dadps não precisam ser atualizados dinamicamente.
+
+	Classe: StatelessWidget.
+
+	Ex.:
+		class MinhaPagina extends StatelessWidget{
+			Widget build(BuildContext context){
+				return Scaffold(
+					appBar: AppBar(
+						title: Text(
+					),
+				);
+			}
+		}
+
+
+
+Stateful (com estado): --------------------------------------------------------------------------------
+
+	Representação visual altera durante o uso.
+
+	Classe: StatefulWidget.
+
+	createState() - método que cria uma instância da classe de estado associada ao widget.
+
+	setState() - método que atualizada o estado do widget.
+
+	Ex.:
+		import 'package:flutter/material.dart';
+
+// Classe que representa o StatefulWidget
+class MeuWidgetStateful extends StatefulWidget {
+  @override
+  _MeuWidgetState createState() => _MeuWidgetState();
+}
+
+// Classe de estado associada ao StatefulWidget
+class _MeuWidgetState extends State<MeuWidgetStateful> {
+  int contador = 0;
+
+  // Método para incrementar o contador
+  void incrementarContador() {
+    setState(() {
+      contador++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+     [...])}
+
+void main() {
+  runApp(MaterialApp(
+    home: MeuWidgetStateful(),
+  ));
+}
 
 
 
