@@ -98,7 +98,11 @@ Scaffold: ----------------------------------------------------------------------
 				Center
 
 			[FloatingActionButton] - botão flutuante; sobrepõe outros widgets;
-			[BottomNavigationBar] - barra de navegação inferior.
+			[bottomNavigationBar] - barra de navegação inferior.
+				BottomNavigationBar
+					items:[]
+						BottomNavigationBarItem(icon, label)
+						
 			[Drawer] - menu vertical
 	
 	
