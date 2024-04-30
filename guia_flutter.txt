@@ -34,6 +34,7 @@ WIDGETS (Ferramentas): ---------------------------------------------------------
 			
 			Parâmetro: (BuildContext context) 
 				- fornece informações sobre a posição do widget na hierarquia da árvore de widget.
+
 	LAYOUT: --------------------------------------------------------------------------------
 	
 		Widgets que se preocupam em apenas posicionar outros widgets.
@@ -86,6 +87,7 @@ MaterialApp: -------------------------------------------------------------------
 	
 		Parâmetros Nomeados:
 			[home] - definir quem vai ser a tela inicial do app
+
 Scaffold: --------------------------------------------------------------------------------
 	
 	- Define as configurações de layout do aplicativo (estrutura e organização da página).
@@ -105,7 +107,8 @@ Scaffold: ----------------------------------------------------------------------
 						
 			[Drawer] - menu vertical
 	
-	
+		
+
 Stateless (sem estado): --------------------------------------------------------------------------------
 
 	Conteúdo ou aparência do widget não mudam. Quando dadps não precisam ser atualizados dinamicamente.
@@ -138,33 +141,71 @@ Stateful (com estado): ---------------------------------------------------------
 	Ex.:
 		import 'package:flutter/material.dart';
 
-// Classe que representa o StatefulWidget
-class MeuWidgetStateful extends StatefulWidget {
-  @override
-  _MeuWidgetState createState() => _MeuWidgetState();
-}
+	// Classe que representa o StatefulWidget
+	class MeuWidgetStateful extends StatefulWidget {
+	  @override
+	  _MeuWidgetState createState() => _MeuWidgetState();
+	}
 
-// Classe de estado associada ao StatefulWidget
-class _MeuWidgetState extends State<MeuWidgetStateful> {
-  int contador = 0;
+	// Classe de estado associada ao StatefulWidget
+	class _MeuWidgetState extends State<MeuWidgetStateful> {
+	  int contador = 0;
 
-  // Método para incrementar o contador
-  void incrementarContador() {
-    setState(() {
-      contador++;
-    });
-  }
+	  // Método para incrementar o contador
+	  void incrementarContador() {
+	    setState(() {
+	      contador++;
+	    });
+	  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-     [...])}
+	  @override
+	  Widget build(BuildContext context) {
+	    return Scaffold(
+	     [...])}
 
-void main() {
-  runApp(MaterialApp(
-    home: MeuWidgetStateful(),
-  ));
-}
+	void main() {
+	  runApp(MaterialApp(
+	    home: MeuWidgetStateful(),
+	  ));
+	}
+
+
+Meus Widgets: --------------------------------------------------------------------------------
+
+	ListView - lista de itens em coluna, rolaveis verticalmente
+		reverse: inverte a ordem dos itens na lista.
+
+		itemCount: especifica o número total de itens que serão construídos na lista.
+
+		itemBuilder: construir cada item da lista a medida que são necessários.
+			itemBuilder: (BuildContext context, int index){
+
+	Align - alinhar o filho dentro do espaço disponível.
+
+
+	Container - permite customização e posicionamento dos filhos.
+		[decoration: BoxDecoration] - personaliza 
+
+	TextField - campo de input de texto
+		[decoration:]
+			[InputDecoration] - classe que define a aparência de um TextField
+				labeltext - título
+				hintText - texto exibido dentro do campo vazio
+				errorText - mensagem para erro de validação
+				prefixIcon / suffixIcon - icone antes ou depois do campo de entrada
+				border - estilo da borda do field
+				enabledBorder - estilo de borda habilitado
+				focusedBorder - estilo de borda selecionado
+				errorBorder - estilo de borda erro
+				disabledBorder - estilo de borda desabilitado
+				contentPadding - define o preenchimento interno do field
+				obscureText - camufla o texto
+
+
+
+
+
+
 
 
 
