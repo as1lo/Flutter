@@ -1,110 +1,108 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(QuizApp());
+void main() {
+  runApp(new TodoListApp());
+}
 
-class QuizApp extends StatelessWidget {
+class TodoListApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: QuizPage(),
+    return new MaterialApp(
+      title: 'Lista de Tarefas',
+      home: new ListaScreen()
     );
   }
 }
 
-class QuizPage extends StatefulWidget {
+class ListaScreen extends StatefulWidget {
   @override
-  _QuizPageState createState() => _QuizPageState();
+  State<StatefulWidget> createState() {
+    return new ListaScreenState();
+  }
 }
 
-class _QuizPageState extends State<QuizPage> {
-  int questionIndex = 0;
+class ListaScreenState extends State<ListaScreen> {
 
-  int score = 0;
+  List<Tarefa> tarefas = [];
+  TextEditingController controller = new TextEditingController();
 
-  List<Question> questions = [
-    Question('Flutter é uma linguagem de programação?', false),
-    Question('Dart é uma linguagem de programação Orientada a Objetos?', true),
-    Question('O flutter é para Android?', true),
-    Question('O flutter é para iOS?', false),
-    Question('aaaaaa', true),
-    Question('teste', false)
-  ];
-
-  void checkAnswer(bool userAnswer) {
-    bool correctAnswer = questions[questionIndex].answer;
-
+  void adicionaTarefa(String nome) { 
     setState(() {
-      if (userAnswer == correctAnswer && score <= questions.length - 1) {
-        score++;
-      }
+      tarefas.add(Tarefa(nome));
+    });  
 
-      if (questionIndex < questions.length - 1) {
-        questionIndex++;
-      }
-    });
+    controller.clear();  
   }
 
-  void resetQuiz() {
-    setState(() {
-      questionIndex = 0;
-      score = 0;
-    });
-  }
+  Widget getItem(Tarefa tarefa) { 
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Quiz App'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            flex: 5,
-            child: Center(
-              child: Text(
-                questions[questionIndex].questiontext,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24.0),
-              ),
-            ),
+    return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          IconButton(
+            icon: Icon(tarefa.concluida ? Icons.check_box : Icons.check_box_outline_blank, size: 42.0, color: Colors.green,),
+            padding: EdgeInsets.only(left: 10.0, right: 30.0),
+            onPressed: () { 
+              setState((){ 
+                tarefa.concluida = true;
+              });
+            }
           ),
-          Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: [
-              ElevatedButton(
-                onPressed: () => checkAnswer(true),
-                child: Text('Verdadeiro'),
-              ),
-              ElevatedButton(
-                onPressed: () => checkAnswer(false),
-                child: Text('false'),
-              ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(tarefa.nome, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+              Text(tarefa.data.toIso8601String()) // Intl
             ],
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
-            child: Text(
-              'Pontuação: $score / ${questions.length}',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20.0),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: resetQuiz,
-            child: Text('Recomeçar'),
-          ),
+          )
         ],
+      );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text("Lista de Tarefas")
+      ),
+      body:
+       Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              controller: controller,
+              onSubmitted: adicionaTarefa
+            )
+          ),
+            Expanded(
+              child:ListView.builder(
+                itemCount: tarefas.length,
+                itemBuilder: (_, indice) { 
+                  return getItem(tarefas[indice]);
+                },
+              )
+            ) 
+        ],
+    
       ),
     );
   }
 }
 
-class Question {
-  final String questiontext;
-  final bool answer;
 
-  Question(this.questiontext, this.answer);
+
+class Tarefa 
+{
+  String nome;
+  DateTime data = DateTime.now();
+  bool concluida = false;
+
+  Tarefa(
+    this.nome
+  );
+    
+    
 }
