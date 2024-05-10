@@ -95,7 +95,7 @@ Scaffold: ----------------------------------------------------------------------
 
 			[AppBar] - NavBar (barra de navegação superior)
 				title: Text
-
+				backgroundColor
 			[Body] - Área principal da tela.
 				Center
 
@@ -108,6 +108,7 @@ Scaffold: ----------------------------------------------------------------------
 			[Drawer] - menu vertical
 	
 		
+			
 
 Stateless (sem estado): --------------------------------------------------------------------------------
 
@@ -172,6 +173,8 @@ Stateful (com estado): ---------------------------------------------------------
 
 Meus Widgets: --------------------------------------------------------------------------------
 
+	appBar: AppBar	
+
 	ListView - lista de itens em coluna, rolaveis verticalmente
 		reverse: inverte a ordem dos itens na lista.
 
@@ -182,9 +185,32 @@ Meus Widgets: ------------------------------------------------------------------
 
 	Align - alinhar o filho dentro do espaço disponível.
 
+		
+	Text - 
+		style:
+			TextStyle()
+				shadows: []
+					Shadow()
+						offset: Offset(,) - deslocamento
+						blurRadius: - suavização 
+						color:
 
 	Container - permite customização e posicionamento dos filhos.
-		[decoration: BoxDecoration] - personaliza 
+		margin:
+			EdgeInsets.all ou .only()
+		[decoration: BoxDecoration] - personaliza o container
+			gradiente: 
+				LinearGradient()
+					begin
+						Alignment.
+
+			image:
+				DecorationImage()
+					image:
+						AssetImage()
+						fit:
+							BoxFit.cover
+
 
 	TextField - campo de input de texto
 		[decoration:]
@@ -200,6 +226,24 @@ Meus Widgets: ------------------------------------------------------------------
 				disabledBorder - estilo de borda desabilitado
 				contentPadding - define o preenchimento interno do field
 				obscureText - camufla o texto
+
+
+
+	ElevatedButton - botão
+		style: 
+			ButtonStyle
+				backgroundColor:
+					MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states){return })
+			
+			ElevatedButton
+				.styleFrom
+				shape:
+					RoundedRectangleBorder()
+						borderRadius:
+							
+				
+	IconButton
+
 
 
 
